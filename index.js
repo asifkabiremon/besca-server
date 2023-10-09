@@ -4,6 +4,7 @@ const { MongoClient, ServerApiVersion, ObjectId } = require("mongodb");
 require('dotenv').config();
 
 const app = express();
+exports.app = app;
 const port = process.env.PORT || 4000;
 
 app.use(cors());
@@ -12,6 +13,7 @@ app.use(express.json());
 const uri = process.env.MONGODB_URI;
 
 const client = new MongoClient(uri);
+exports.client = client;
 
 
 app.get('/', (req, res) => {
@@ -27,7 +29,7 @@ const run = async () => {
         app.get("/api/template", async (req, res) => {
             const templateName = req.query.templateName;
             const cursor = await templateCollection.findOne({ templateName: templateName });
-            if(cursor) {
+            if (cursor) {
                 res.status(200).send(cursor);
             }
             else {
@@ -39,7 +41,7 @@ const run = async () => {
         app.post('/api/tableData', async (req, res) => {
             const target = req.body.target;
             const action = req.body.action;
-            if(action === 'search') {
+            if (action === 'search') {
                 const parameters = req.body.parameters;
                 const searchWay = req.body.searchWay;
                 const columnOrder = req.body.columnOrder;
@@ -47,7 +49,7 @@ const run = async () => {
                 const limit = req.body.maxRow;
 
                 const targetCollection = database.collection(target);
- 
+
                 const project = {};
 
                 columnOrder.forEach(element => {
@@ -79,41 +81,41 @@ const run = async () => {
 
                 console.log(searchWay);
                 const match = {};
-                if(searchWay.condition === 'or' || searchWay.condition === 'and') {
+                if (searchWay.condition === 'or' || searchWay.condition === 'and') {
                     const matchFields = [];
-                    searchWay.fields.forEach(({key, dataType, operator}) => {
-                        if(parameters[key]) {
-                            if(dataType === 'string') {
-                                if(operator === "match") {
-                                    matchFields.push({[key]: { $regex: parameters[key], $options: 'i' }})
-                                } else if(operator === "equal") {
-                                    matchFields.push({[key]: parameters[key]});
+                    searchWay.fields.forEach(({ key, dataType, operator }) => {
+                        if (parameters[key]) {
+                            if (dataType === 'string') {
+                                if (operator === "match") {
+                                    matchFields.push({ [key]: { $regex: parameters[key], $options: 'i' } });
+                                } else if (operator === "equal") {
+                                    matchFields.push({ [key]: parameters[key] });
                                 }
                             }
-                            else if(dataType === 'number') {
-                                if(operator === "equal") {
-                                    matchFields.push({[key]: parameters[key]});
-                                } else if(operator === "greaterThan") {
-                                    matchFields.push({[key]: { $gt: Number(parameters[key]) }});
-                                } else if(operator === "lessThan") {
-                                    matchFields.push({[key]: { $lt: Number(parameters[key]) }});
-                                } else if(operator === "greaterThanOrEqual") {
-                                    matchFields.push({[key]: { $gte: Number(parameters[key]) }});
-                                } else if(operator === "lessThanOrEqual") {
-                                    matchFields.push({[key]: { $lte: Number(parameters[key]) }});
-                                } else if(operator === "notEqual") {
-                                    matchFields.push({[key]: { $ne: Number(parameters[key]) }});
+                            else if (dataType === 'number') {
+                                if (operator === "equal") {
+                                    matchFields.push({ [key]: parameters[key] });
+                                } else if (operator === "greaterThan") {
+                                    matchFields.push({ [key]: { $gt: Number(parameters[key]) } });
+                                } else if (operator === "lessThan") {
+                                    matchFields.push({ [key]: { $lt: Number(parameters[key]) } });
+                                } else if (operator === "greaterThanOrEqual") {
+                                    matchFields.push({ [key]: { $gte: Number(parameters[key]) } });
+                                } else if (operator === "lessThanOrEqual") {
+                                    matchFields.push({ [key]: { $lte: Number(parameters[key]) } });
+                                } else if (operator === "notEqual") {
+                                    matchFields.push({ [key]: { $ne: Number(parameters[key]) } });
                                 }
                             }
-                            else if(dataType === 'date') {
-                                matchFields.push({[key]: parameters[key]});
+                            else if (dataType === 'date') {
+                                matchFields.push({ [key]: parameters[key] });
                             }
                         }
                     });
-                    if(searchWay.condition === 'or') {
+                    if (searchWay.condition === 'or') {
                         match['$or'] = [...matchFields];
                     }
-                    else if(searchWay.condition === 'and') {
+                    else if (searchWay.condition === 'and') {
                         match['$and'] = [...matchFields];
                     }
                 }
@@ -134,7 +136,7 @@ const run = async () => {
                     {
                         $project: project
                     }
-                ]).toArray(); 
+                ]).toArray();
                 console.log(cursor);
                 res.status(200).send({
                     target: target,
@@ -150,9 +152,9 @@ const run = async () => {
         app.get("/api/countries", async (req, res) => {
             const country = req.query.country || "";
             const countryCollection = database.collection("countries");
-            if(country !== "") {
-                const cursor = await countryCollection.find({country: { $regex: country, $options: 'i' }}).toArray();
-                if(cursor) {
+            if (country !== "") {
+                const cursor = await countryCollection.find({ country: { $regex: country, $options: 'i' } }).toArray();
+                if (cursor) {
                     res.status(200).send(cursor);
                 }
                 else {
@@ -160,7 +162,7 @@ const run = async () => {
                 }
             } else {
                 const cursor = await countryCollection.find({}).toArray();
-                if(cursor) {
+                if (cursor) {
                     res.status(200).send(cursor);
                 }
                 else {
@@ -175,15 +177,13 @@ const run = async () => {
             const id = req.body.user_id;
             const fields = req.body.fields;
 
-            const targetCollection = database.collection(target);
-
             const project = {};
             fields.forEach(element => {
                 project[element.key] = 1;
             });
             console.log(project);
 
-            const cursor = await targetCollection.findOne({_id: id}, {projection: project});
+            const cursor = await database.collection(target).findOne({_id: new ObjectId(id)}, project);
             console.log(cursor);
             res.status(200).send(cursor);
         });
