@@ -46,12 +46,36 @@ const run = async () => {
                 const page = req.body.page;
                 const limit = req.body.maxRow;
 
+                const targetCollection = database.collection(target);
+ 
                 const project = {};
 
                 columnOrder.forEach(element => {
                     project[element] = 1;
                 });
                 console.log(project);
+
+                if (Object.keys(parameters).length === 0) {
+                    const totalDocument = await targetCollection.countDocuments();
+                    const cursor = await targetCollection.aggregate([
+                        {
+                            $skip: page * limit
+                        },
+                        {
+                            $limit: limit
+                        },
+                        {
+                            $project: project
+                        }
+                    ]).toArray();
+                    res.status(200).send({
+                        target: target,
+                        action: action,
+                        tableCol: columnOrder,
+                        tableRow: cursor,
+                        totalPage: Math.ceil(totalDocument / limit),
+                    });
+                }
 
                 console.log(searchWay);
                 const match = {};
@@ -94,8 +118,6 @@ const run = async () => {
                     }
                 }
                 console.log(match);
-
-                const targetCollection = database.collection(target);
 
                 const totalDocument = await targetCollection.countDocuments(match);
 
