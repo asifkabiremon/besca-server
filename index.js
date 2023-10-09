@@ -68,7 +68,7 @@ const run = async () => {
                             $project: project
                         }
                     ]).toArray();
-                    res.status(200).send({
+                    return res.status(200).send({
                         target: target,
                         action: action,
                         tableCol: columnOrder,
