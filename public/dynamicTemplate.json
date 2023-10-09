@@ -3,7 +3,7 @@
         "templateName": "user",
         "tableName": "user",
         "searchComponent": {
-            "condition": "or",
+            "condition": "and",
             "fields": [
                 {
                     "key": "name",
@@ -154,7 +154,6 @@
                 {
                     "key": "name",
                     "title": "Name",
-                    "type": "string",
                     "size": "auto"
                 },
                 {
@@ -184,9 +183,28 @@
             "maxRow": 20
         },
         "viewDetailComponent": {
-            "fields": {
-                
-            }
+            "fields": [
+                {
+                    "key": "name",
+                    "title": "Name"
+                },
+                {
+                    "key": "age",
+                    "title": "Age"
+                },
+                {
+                    "key": "dateOfBirth",
+                    "title": "Date Of Birth"
+                },
+                {
+                    "key": "country",
+                    "title": "Country"
+                },
+                {
+                    "key": "gender",
+                    "title": "Gender"
+                }
+            ]
         }
     },
     {
@@ -374,6 +392,34 @@
             "scrollRight": "enabled",
             "displayOrder": "row",
             "maxRow": 20
+        },
+        "viewDetailComponent": {
+            "fields": [
+                {
+                    "key": "traineeId",
+                    "title": "Trainee ID"
+                },
+                {
+                    "key": "email",
+                    "title": "Email"
+                },
+                {
+                    "key": "name",
+                    "title": "Name"
+                },
+                {
+                    "key": "dateOfBirth",
+                    "title": "DOB"
+                },
+                {
+                    "key": "contactNumber",
+                    "title": "Contact Number"
+                },
+                {
+                    "key": "race",
+                    "title": "Race"
+                }
+            ]
         }
     }
 ]

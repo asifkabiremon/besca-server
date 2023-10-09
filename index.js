@@ -169,7 +169,24 @@ const run = async () => {
             }
         });
 
-        // Query for getting all states
+        // Query for getting data for a specific table row
+        app.post('/api/viewDetails', async (req, res) => {
+            const target = req.body.target;
+            const id = req.body.user_id;
+            const fields = req.body.fields;
+
+            const targetCollection = database.collection(target);
+
+            const project = {};
+            fields.forEach(element => {
+                project[element.key] = 1;
+            });
+            console.log(project);
+
+            const cursor = await targetCollection.findOne({_id: id}, {projection: project});
+            console.log(cursor);
+            res.status(200).send(cursor);
+        });
     }
     finally {
         // await client.close();
