@@ -183,8 +183,8 @@ const run = async () => {
             });
             console.log(project);
 
-            const cursor = await database.collection(target).findOne({_id: new ObjectId(id)}, project);
-            console.log(cursor);
+            const cursor = await database.collection(target).findOne({_id: new ObjectId(id)}, {projection: project});
+            // console.log(cursor);
             res.status(200).send(cursor);
         });
     }
