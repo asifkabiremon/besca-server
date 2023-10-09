@@ -1,0 +1,40 @@
+{
+    "target": "user",
+    "action": "search",
+    "parameters": {
+        "gender": "Male"
+    },
+    "searchWay": {
+        "condition": "or",
+        "fields": [
+            {
+                "key": "name",
+                "dataType": "string",
+                "operator": "match"
+            },
+            {
+                "key": "age",
+                "dataType": "number",
+                "operator": "greaterThan"
+            },
+            {
+                "key": "dateOfBirth",
+                "dataType": "date",
+                "operator": "equal"
+            },
+            {
+                "key": "country",
+                "dataType": "string",
+                "operator": "equal"
+            },
+            {
+                "key": "gender",
+                "dataType": "string",
+                "operator": "equal"
+            }
+        ]
+    },
+    "displayOrder": "row",
+    "maxRow": 10,
+    "page": 1  
+}

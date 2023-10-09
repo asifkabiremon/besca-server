@@ -1,0 +1,379 @@
+[
+    {
+        "templateName": "user",
+        "tableName": "user",
+        "searchComponent": {
+            "condition": "or",
+            "fields": [
+                {
+                    "key": "name",
+                    "dataType": "string",
+                    "type": "text",
+                    "label": "Name",
+                    "placeholder": "Enter name",
+                    "operator": "match",
+                    "width": "100%",
+                    "size": 4
+                },
+                {
+                    "key": "age",
+                    "dataType": "number",
+                    "type": "number",
+                    "label": "Age",
+                    "placeholder": "Enter age",
+                    "operator": "greaterThan",
+                    "width": "100%",
+                    "size": 4
+                },
+                {
+                    "key": "dateOfBirth",
+                    "dataType": "date",
+                    "type": "date",
+                    "label": "DOB",
+                    "placeholder": "Enter DOB",
+                    "operator": "equal",
+                    "width": "150px",
+                    "size": 4
+                },
+                {
+                    "key": "country",
+                    "dataType": "string",
+                    "type": "dropdown",
+                    "searchable": true,
+                    "label": "Country",
+                    "placeholder": "Select country",
+                    "lutApi": "/api/country_city/country",
+                    "operator": "equal",
+                    "width": "100%",
+                    "size": 4
+                },
+                {
+                    "key": "city",
+                    "dataType": "string",
+                    "type": "dropdown",
+                    "dependOn": "country",
+                    "searchable": false,
+                    "label": "City",
+                    "placeholder": "Select city",
+                    "lutApi": "/api/country_city/city",
+                    "operator": "equal",
+                    "width": "100%",
+                    "size": 4
+                },
+                {
+                    "key": "gender",
+                    "dataType": "string",
+                    "type": "radio",
+                    "label": "Gender",
+                    "placeholder":"Enter gender",
+                    "values": [
+                        "Male",
+                        "Female"
+                    ],
+                    "operator": "equal",
+                    "width": "100%",
+                    "size": 6
+                }
+            ]
+        },
+        "formComponent": {
+            "fields": [
+                {
+                    "key": "name",
+                    "dataType": "string",
+                    "type": "text",
+                    "label": "Name",
+                    "placeholder": "Enter name",
+                    "required": true,
+                    "width": "100%",
+                    "size": 4
+                },
+                {
+                    "key": "age",
+                    "dataType": "number",
+                    "type": "number",
+                    "label": "Age",
+                    "placeholder": "Enter age",
+                    "required": true,
+                    "width": "100%",
+                    "size": 4
+                },
+                {
+                    "key": "dateOfBirth",
+                    "dataType": "date",
+                    "type": "date",
+                    "label": "DOB",
+                    "placeholder": "Enter DOB",
+                    "required": true,
+                    "width": "150px",
+                    "size": 4
+                },
+                {
+                    "key": "country",
+                    "dataType": "string",
+                    "type": "dropdown",
+                    "searchable": true,
+                    "label": "Country",
+                    "placeholder": "Select country",
+                    "lutApi": "/api/country_city/country",
+                    "operator": "equal",
+                    "required": true,
+                    "size": 4
+                },
+                {
+                    "key": "city",
+                    "dataType": "string",
+                    "type": "dropdown",
+                    "dependOn": "country",
+                    "searchable": false,
+                    "label": "City",
+                    "placeholder": "Select city",
+                    "lutApi": "/api/country_city/city",
+                    "operator": "equal",
+                    "width": "100%",
+                    "size": 4
+                },
+                {
+                    "key": "gender",
+                    "dataType": "string",
+                    "type": "radio",
+                    "label": "Gender",
+                    "placeholder":"Enter gender",
+                    "values": [
+                        "Male",
+                        "Female"
+                    ],
+                    "required": true,
+                    "width": "100%",
+                    "size": 6
+                }
+            ]
+        },
+        "tableComponent": {
+            "tableCol": [
+                {
+                    "key": "name",
+                    "title": "Name",
+                    "type": "string",
+                    "size": "auto"
+                },
+                {
+                    "key": "age",
+                    "title": "Age",
+                    "size": "150px"
+                },
+                {
+                    "key": "dateOfBirth",
+                    "title": "DOB",
+                    "size": "100px"
+                },
+                {
+                    "key": "country",
+                    "title": "Country",
+                    "size": "150px"
+                },
+                {
+                    "key": "gender",
+                    "title": "Gender",
+                    "size": "180px"
+                }
+            ],
+            "mode": "responsive",
+            "scrollRight": "enabled",
+            "displayOrder": "row",
+            "maxRow": 20
+        },
+        "viewDetailComponent": {
+            "fields": {
+                
+            }
+        }
+    },
+    {
+        "templateName": "trainee",
+        "tableName": "trainee",
+        "searchComponent": {
+            "condition": "or",
+            "fields": [
+                {
+                    "key": "traineeId",
+                    "dataType": "string",
+                    "type": "text",
+                    "label": "Trainee ID",
+                    "placeholder": "Enter trainee ID",
+                    "operator": "match",
+                    "width": "100%",
+                    "size": 4
+                },
+                {
+                    "key": "email",
+                    "dataType": "string",
+                    "type": "email",
+                    "label": "Email",
+                    "placeholder": "Enter email",
+                    "operator": "match",
+                    "width": "100%",
+                    "size": 4
+                },
+                {
+                    "key": "name",
+                    "dataType": "string",
+                    "type": "text",
+                    "label": "Name",
+                    "placeholder": "Enter name",
+                    "operator": "match",
+                    "width": "100%",
+                    "size": 4
+                },
+                {
+                    "key": "dateOfBirth",
+                    "dataType": "date",
+                    "type": "date",
+                    "label": "DOB",
+                    "placeholder": "Enter DOB",
+                    "operator": "equal",
+                    "width": "150px",
+                    "size": 4
+                },
+                {
+                    "key": "contactNumber",
+                    "dataType": "string",
+                    "type": "text",
+                    "label": "Contact Number",
+                    "placeholder": "Enter contact number",
+                    "operator": "match",
+                    "width": "100%",
+                    "size": 4
+                },
+                {
+                    "key": "race",
+                    "dataType": "string",
+                    "type": "dropdown",
+                    "values": [
+                        "Malay",
+                        "Eurasian",
+                        "Chinese",
+                        "Indian",
+                        "Others"
+                    ],
+                    "label": "Race",
+                    "placeholder": "Select race",
+                    "operator": "equal",
+                    "url": "",
+                    "width": "150px",
+                    "size": 4
+                }
+            ]
+        },
+        "formComponent": {
+            "fields": [
+                {
+                    "key": "traineeId",
+                    "dataType": "string",
+                    "type": "text",
+                    "label": "Trainee ID",
+                    "placeholder": "Enter trainee ID",
+                    "required": true,
+                    "width": "100%",
+                    "size": 4
+                },
+                {
+                    "key": "email",
+                    "dataType": "string",
+                    "type": "email",
+                    "label": "Email",
+                    "placeholder": "Enter email",
+                    "required": true,
+                    "width": "100%",
+                    "size": 4
+                },
+                {
+                    "key": "name",
+                    "dataType": "string",
+                    "type": "text",
+                    "label": "Name",
+                    "placeholder": "Enter name",
+                    "required": true,
+                    "width": "100%",
+                    "size": 4
+                },
+                {
+                    "key": "dateOfBirth",
+                    "dataType": "date",
+                    "type": "date",
+                    "label": "DOB",
+                    "placeholder": "Enter DOB",
+                    "required": true,
+                    "width": "150px",
+                    "size": 4
+                },
+                {
+                    "key": "contactNumber",
+                    "dataType": "string",
+                    "type": "text",
+                    "label": "Contact Number",
+                    "placeholder": "Enter contact number",
+                    "required": true,
+                    "width": "100%",
+                    "size": 4
+                },
+                {
+                    "key": "race",
+                    "dataType": "string",
+                    "type": "dropdown",
+                    "values": [
+                        "Malay",
+                        "Eurasian",
+                        "Chinese",
+                        "Indian",
+                        "Others"
+                    ],
+                    "label": "Race",
+                    "placeholder": "Select race",
+                    "required": true,
+                    "url": "",
+                    "width": "150px",
+                    "size": 4
+                }
+            ]
+        },
+        "tableComponent": {
+            "tableCol": [
+                {
+                    "key": "traineeId",
+                    "title": "Trainee ID",
+                    "size": "150px"
+                },
+                {
+                    "key": "email",
+                    "title": "Email",
+                    "size": "200px"
+                },
+                {
+                    "key": "name",
+                    "title": "Name",
+                    "size": "300px"
+                },
+                {
+                    "key": "dateOfBirth",
+                    "title": "DOB",
+                    "size": "100px"
+                },
+                {
+                    "key": "contactNumber",
+                    "title": "Contact Number",
+                    "size": "50px"
+                },
+                {
+                    "key": "race",
+                    "title": "Race",
+                    "size": "30px"
+                }
+            ],
+            "mode": "responsive",
+            "scrollRight": "enabled",
+            "displayOrder": "row",
+            "maxRow": 20
+        }
+    }
+]

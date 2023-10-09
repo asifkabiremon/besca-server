@@ -1,0 +1,98 @@
+{
+    "templateName": "user",
+    "searchComponent": {
+        "condition": "or",
+        "fields": [
+            {
+                "key": "name",
+                "dataType": "string",
+                "type": "text",
+                "title": "Name",
+                "operator": "match",
+                "width": "100%",
+                "size": 4
+            },
+            {
+                "key": "age",
+                "dataType": "number",
+                "type": "number",
+                "title": "Age",
+                "operator": "greaterThan",
+                "width": "100%",
+                "size": 4
+            },
+            {
+                "key": "dateOfBirth",
+                "dataType": "date",
+                "type": "date",
+                "title": "DOB",
+                "operator": "equal",
+                "width": "150px",
+                "size": 4
+            },
+            {
+                "key": "country",
+                "dataType": "string",
+                "type": "dropdown",
+                "title": "Country",
+                "values": [
+                    "Malaysia",
+                    "Singapore",
+                    "India",
+                    "Bangladesh"
+                ],
+                "operator": "equal",
+                "width": "100%",
+                "size": 4
+            },
+            {
+                "key": "gender",
+                "dataType": "string",
+                "type": "radio",
+                "title": "Gender",
+                "values": [
+                    "Male",
+                    "Female",
+                    "Agender",
+                    "Genderfluid"
+                ],
+                "operator": "equal",
+                "width": "100%",
+                "size": 6
+            }
+        ]
+    },
+    "tableStyle": {
+        "tableCol": [
+            {
+                "key": "name",
+                "title": "Name",
+                "type": "string",
+                "size": "auto"
+            },
+            {
+                "key": "age",
+                "title": "Age",
+                "size": "100px"
+            },
+            {
+                "key": "dateOfBirth",
+                "title": "DOB",
+                "size": "100px"
+            },
+            {
+                "key": "country",
+                "title": "Country",
+                "size": "150px"
+            },
+            {
+                "key": "gender",
+                "title": "Gender",
+                "size": "180px"
+            }
+        ],
+        "mode": "responsive",
+        "scrollRight": "enabled",
+        "maxRow": 20
+    }
+}
