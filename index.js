@@ -138,6 +138,7 @@ const run = async () => {
                     }
                 ]).toArray();
                 console.log(cursor);
+                
                 res.status(200).send({
                     target: target,
                     action: action,

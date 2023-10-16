@@ -1,13 +1,15 @@
 {
-    "templateName": "user",
+    "templateName": "student",
+    "tableName": "student",
     "searchComponent": {
-        "condition": "or",
+        "condition": "and",
         "fields": [
             {
                 "key": "name",
                 "dataType": "string",
                 "type": "text",
-                "title": "Name",
+                "label": "Name",
+                "placeholder": "Enter name",
                 "operator": "match",
                 "width": "100%",
                 "size": 4
@@ -16,83 +18,164 @@
                 "key": "age",
                 "dataType": "number",
                 "type": "number",
-                "title": "Age",
+                "label": "Age",
+                "placeholder": "Enter age",
                 "operator": "greaterThan",
                 "width": "100%",
                 "size": 4
             },
             {
-                "key": "dateOfBirth",
-                "dataType": "date",
-                "type": "date",
-                "title": "DOB",
+                "key": "email",
+                "dataType": "string",
+                "type": "email",
+                "label": "Email",
+                "placeholder": "Enter email",
                 "operator": "equal",
                 "width": "150px",
-                "size": 4
-            },
-            {
-                "key": "country",
-                "dataType": "string",
-                "type": "dropdown",
-                "title": "Country",
-                "values": [
-                    "Malaysia",
-                    "Singapore",
-                    "India",
-                    "Bangladesh"
-                ],
-                "operator": "equal",
-                "width": "100%",
                 "size": 4
             },
             {
                 "key": "gender",
                 "dataType": "string",
                 "type": "radio",
-                "title": "Gender",
+                "label": "Gender",
+                "placeholder":"Enter gender",
                 "values": [
                     "Male",
-                    "Female",
-                    "Agender",
-                    "Genderfluid"
+                    "Female"
                 ],
                 "operator": "equal",
                 "width": "100%",
                 "size": 6
+            },
+            {
+                "key": "traineeId",
+                "dataType": "string",
+                "type": "text",
+                "searchable": true,
+                "label": "Trainee ID",
+                "placeholder": "Enter trainee ID",
+                "operator": "equal",
+                "width": "100%",
+                "size": 4
             }
         ]
     },
-    "tableStyle": {
+    "formComponent": {
+        "fields": [
+            {
+                "key": "name",
+                "dataType": "string",
+                "type": "text",
+                "label": "Name",
+                "placeholder": "Enter name",
+                "required": true,
+                "width": "100%",
+                "size": 4
+            },
+            {
+                "key": "age",
+                "dataType": "number",
+                "type": "number",
+                "label": "Age",
+                "placeholder": "Enter age",
+                "required": true,
+                "width": "100%",
+                "size": 4
+            },
+            {
+                "key": "email",
+                "dataType": "string",
+                "type": "email",
+                "label": "Email",
+                "placeholder": "Enter email",
+                "required": true,
+                "width": "150px",
+                "size": 4
+            },
+            {
+                "key": "gender",
+                "dataType": "string",
+                "type": "radio",
+                "label": "Gender",
+                "placeholder":"Enter gender",
+                "values": [
+                    "Male",
+                    "Female"
+                ],
+                "required": true,
+                "width": "100%",
+                "size": 6
+            },
+            {
+                "key": "traineeId",
+                "dataType": "string",
+                "type": "text",
+                "searchable": true,
+                "label": "Trainee ID",
+                "placeholder": "Enter trainee ID",
+                "operator": "equal",
+                "required": true,
+                "width": "100%",
+                "size": 4
+            }
+        ]
+    },
+    "tableComponent": {
         "tableCol": [
             {
                 "key": "name",
                 "title": "Name",
-                "type": "string",
                 "size": "auto"
             },
             {
                 "key": "age",
                 "title": "Age",
-                "size": "100px"
-            },
-            {
-                "key": "dateOfBirth",
-                "title": "DOB",
-                "size": "100px"
-            },
-            {
-                "key": "country",
-                "title": "Country",
                 "size": "150px"
+            },
+            {
+                "key": "email",
+                "title": "Email",
+                "size": "100px"
             },
             {
                 "key": "gender",
                 "title": "Gender",
                 "size": "180px"
+            },
+            {
+                "key": "traineeId",
+                "title": "Trainee ID",
+                "size": "180px"
             }
         ],
         "mode": "responsive",
         "scrollRight": "enabled",
+        "displayOrder": "row",
         "maxRow": 20
+    },
+    "viewDetailComponent": {
+        "fields": [
+            {
+                "key": "name",
+                "title": "Name"
+            },
+            {
+                "key": "age",
+                "title": "Age"
+            },
+            {
+                "key": "email",
+                "title": "Email"
+            },
+            {
+                "key": "gender",
+                "title": "Gender"
+            },
+            {
+                "key": "traineeId",
+                "title": "Trainee ID"
+            }
+        ]
     }
 }

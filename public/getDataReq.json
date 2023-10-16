@@ -4,6 +4,9 @@
     "parameters": {
         "gender": "Male"
     },
+    "columnOrder": [
+        "name", "age", "dateOfBirth"
+    ],
     "searchWay": {
         "condition": "or",
         "fields": [

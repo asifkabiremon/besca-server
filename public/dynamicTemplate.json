@@ -208,6 +208,187 @@
         }
     },
     {
+        "templateName": "student",
+        "tableName": "student",
+        "searchComponent": {
+            "condition": "and",
+            "fields": [
+                {
+                    "key": "name",
+                    "dataType": "string",
+                    "type": "text",
+                    "label": "Name",
+                    "placeholder": "Enter name",
+                    "operator": "match",
+                    "width": "100%",
+                    "size": 4
+                },
+                {
+                    "key": "age",
+                    "dataType": "number",
+                    "type": "number",
+                    "label": "Enter age",
+                    "placeholder": "Enter age",
+                    "operator": "greaterThan",
+                    "width": "100%",
+                    "size": 4
+                },
+                {
+                    "key": "email",
+                    "dataType": "string",
+                    "type": "email",
+                    "label": "Enter email",
+                    "placeholder": "Enter DOB",
+                    "operator": "equal",
+                    "width": "150px",
+                    "size": 4
+                },
+                {
+                    "key": "gender",
+                    "dataType": "string",
+                    "type": "radio",
+                    "label": "Gender",
+                    "placeholder":"Enter gender",
+                    "values": [
+                        "Male",
+                        "Female"
+                    ],
+                    "operator": "equal",
+                    "width": "100%",
+                    "size": 6
+                },
+                {
+                    "key": "traineeId",
+                    "dataType": "string",
+                    "type": "dropdown",
+                    "searchable": true,
+                    "label": "Trainee ID",
+                    "placeholder": "Enter trainee ID",
+                    "operator": "equal",
+                    "width": "100%",
+                    "size": 4
+                }
+            ]
+        },
+        "formComponent": {
+            "fields": [
+                {
+                    "key": "name",
+                    "dataType": "string",
+                    "type": "text",
+                    "label": "Name",
+                    "placeholder": "Enter name",
+                    "required": true,
+                    "width": "100%",
+                    "size": 4
+                },
+                {
+                    "key": "age",
+                    "dataType": "number",
+                    "type": "number",
+                    "label": "Age",
+                    "placeholder": "Enter age",
+                    "required": true,
+                    "width": "100%",
+                    "size": 4
+                },
+                {
+                    "key": "email",
+                    "dataType": "string",
+                    "type": "email",
+                    "label": "Email",
+                    "placeholder": "Enter email",
+                    "required": true,
+                    "width": "150px",
+                    "size": 4
+                },
+                {
+                    "key": "gender",
+                    "dataType": "string",
+                    "type": "radio",
+                    "label": "Gender",
+                    "placeholder":"Enter gender",
+                    "values": [
+                        "Male",
+                        "Female"
+                    ],
+                    "required": true,
+                    "width": "100%",
+                    "size": 6
+                },
+                {
+                    "key": "traineeId",
+                    "dataType": "string",
+                    "type": "dropdown",
+                    "searchable": true,
+                    "label": "Trainee ID",
+                    "placeholder": "Enter trainee ID",
+                    "operator": "equal",
+                    "required": true,
+                    "width": "100%",
+                    "size": 4
+                }
+            ]
+        },
+        "tableComponent": {
+            "tableCol": [
+                {
+                    "key": "name",
+                    "title": "Name",
+                    "size": "auto"
+                },
+                {
+                    "key": "age",
+                    "title": "Age",
+                    "size": "150px"
+                },
+                {
+                    "key": "email",
+                    "title": "Email",
+                    "size": "100px"
+                },
+                {
+                    "key": "gender",
+                    "title": "Gender",
+                    "size": "180px"
+                },
+                {
+                    "key": "traineeId",
+                    "title": "Trainee ID",
+                    "size": "180px"
+                }
+            ],
+            "mode": "responsive",
+            "scrollRight": "enabled",
+            "displayOrder": "row",
+            "maxRow": 20
+        },
+        "viewDetailComponent": {
+            "fields": [
+                {
+                    "key": "name",
+                    "title": "Name"
+                },
+                {
+                    "key": "age",
+                    "title": "Age"
+                },
+                {
+                    "key": "email",
+                    "title": "Email"
+                },
+                {
+                    "key": "gender",
+                    "title": "Gender"
+                },
+                {
+                    "key": "traineeId",
+                    "title": "Trainee ID"
+                }
+            ]
+        }
+    },
+    {
         "templateName": "trainee",
         "tableName": "trainee",
         "searchComponent": {
