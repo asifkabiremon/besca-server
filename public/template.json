@@ -1,6 +1,6 @@
 {
-    "templateName": "student",
-    "tableName": "student",
+    "templateName": "user",
+    "tableName": "user",
     "searchComponent": {
         "condition": "and",
         "fields": [
@@ -15,6 +15,17 @@
                 "size": 4
             },
             {
+                "key": "courseName",
+                "dataType": "string",
+                "type": "text",
+                "label": "Course Name",
+                "placeholder": "Enter Course Name",
+                "operator": "match",
+                "width": "100%",
+                "externalTable": "course",
+                "size": 4
+            },
+            {
                 "key": "age",
                 "dataType": "number",
                 "type": "number",
@@ -25,13 +36,38 @@
                 "size": 4
             },
             {
-                "key": "email",
-                "dataType": "string",
-                "type": "email",
-                "label": "Email",
-                "placeholder": "Enter email",
+                "key": "dateOfBirth",
+                "dataType": "date",
+                "type": "date",
+                "label": "DOB",
+                "placeholder": "Enter DOB",
                 "operator": "equal",
                 "width": "150px",
+                "size": 4
+            },
+            {
+                "key": "country",
+                "dataType": "string",
+                "type": "dropdown",
+                "searchable": true,
+                "label": "Country",
+                "placeholder": "Select country",
+                "lutApi": "/api/country_city/country",
+                "operator": "equal",
+                "width": "100%",
+                "size": 4
+            },
+            {
+                "key": "city",
+                "dataType": "string",
+                "type": "dropdown",
+                "dependOn": "country",
+                "searchable": false,
+                "label": "City",
+                "placeholder": "Select city",
+                "lutApi": "/api/country_city/city",
+                "operator": "equal",
+                "width": "100%",
                 "size": 4
             },
             {
@@ -47,17 +83,6 @@
                 "operator": "equal",
                 "width": "100%",
                 "size": 6
-            },
-            {
-                "key": "traineeId",
-                "dataType": "string",
-                "type": "text",
-                "searchable": true,
-                "label": "Trainee ID",
-                "placeholder": "Enter trainee ID",
-                "operator": "equal",
-                "width": "100%",
-                "size": 4
             }
         ]
     },
@@ -84,13 +109,38 @@
                 "size": 4
             },
             {
-                "key": "email",
-                "dataType": "string",
-                "type": "email",
-                "label": "Email",
-                "placeholder": "Enter email",
+                "key": "dateOfBirth",
+                "dataType": "date",
+                "type": "date",
+                "label": "DOB",
+                "placeholder": "Enter DOB",
                 "required": true,
                 "width": "150px",
+                "size": 4
+            },
+            {
+                "key": "country",
+                "dataType": "string",
+                "type": "dropdown",
+                "searchable": true,
+                "label": "Country",
+                "placeholder": "Select country",
+                "lutApi": "/api/country_city/country",
+                "operator": "equal",
+                "required": true,
+                "size": 4
+            },
+            {
+                "key": "city",
+                "dataType": "string",
+                "type": "dropdown",
+                "dependOn": "country",
+                "searchable": false,
+                "label": "City",
+                "placeholder": "Select city",
+                "lutApi": "/api/country_city/city",
+                "operator": "equal",
+                "width": "100%",
                 "size": 4
             },
             {
@@ -106,18 +156,6 @@
                 "required": true,
                 "width": "100%",
                 "size": 6
-            },
-            {
-                "key": "traineeId",
-                "dataType": "string",
-                "type": "text",
-                "searchable": true,
-                "label": "Trainee ID",
-                "placeholder": "Enter trainee ID",
-                "operator": "equal",
-                "required": true,
-                "width": "100%",
-                "size": 4
             }
         ]
     },
@@ -129,23 +167,29 @@
                 "size": "auto"
             },
             {
+                "key": "courseFees",
+                "title": "Course Fees",
+                "size": "auto",
+                "externalTable": "student"
+            },
+            {
                 "key": "age",
                 "title": "Age",
                 "size": "150px"
             },
             {
-                "key": "email",
-                "title": "Email",
+                "key": "dateOfBirth",
+                "title": "DOB",
                 "size": "100px"
+            },
+            {
+                "key": "country",
+                "title": "Country",
+                "size": "150px"
             },
             {
                 "key": "gender",
                 "title": "Gender",
-                "size": "180px"
-            },
-            {
-                "key": "traineeId",
-                "title": "Trainee ID",
                 "size": "180px"
             }
         ],
@@ -165,16 +209,16 @@
                 "title": "Age"
             },
             {
-                "key": "email",
-                "title": "Email"
+                "key": "dateOfBirth",
+                "title": "Date Of Birth"
+            },
+            {
+                "key": "country",
+                "title": "Country"
             },
             {
                 "key": "gender",
                 "title": "Gender"
-            },
-            {
-                "key": "traineeId",
-                "title": "Trainee ID"
             }
         ]
     }

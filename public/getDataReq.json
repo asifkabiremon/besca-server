@@ -4,9 +4,6 @@
     "parameters": {
         "gender": "Male"
     },
-    "columnOrder": [
-        "name", "age", "dateOfBirth"
-    ],
     "searchWay": {
         "condition": "or",
         "fields": [
@@ -37,7 +34,8 @@
             }
         ]
     },
-    "displayOrder": "row",
-    "maxRow": 10,
-    "page": 1  
+    "columnsToRetrieve": ["name", "age", "dateOfBirth"],
+    "resultDisplayOrder": "row",
+    "maxRowsPerPage": 10,
+    "pageToRetrieve": 1  
 }
