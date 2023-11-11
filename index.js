@@ -1,7 +1,9 @@
 const express = require('express');
 const cors = require("cors");
-const { MongoClient, ServerApiVersion, ObjectId } = require("mongodb");
+const { MongoClient, ServerApiVersion } = require("mongodb");
+const { ObjectId } = require('mongodb');
 require('dotenv').config();
+
 
 const app = express();
 exports.app = app;
@@ -24,6 +26,8 @@ const run = async () => {
     try {
         const database = client.db("BES3D");
         const templateCollection = database.collection("templates");
+        const trainee = database.collection("trainee");
+
 
         // Query for getting a specific template
         app.get("/api/template", async (req, res) => {
@@ -127,16 +131,13 @@ const run = async () => {
 
 
         // Query for getting user data 
-        app.get('/api/getRecord/:tableName/:ID', async (req, res) => {
-            const tableName = req.query.tableName;
-            const ID = req.query.ID;
-
-            const cursor = await tableName.findOne({ _id: ID });
-            if (cursor) {
-                res.status(200).send(cursor);
-            } else {
-                res.status(404).send("No data found!");
-            }
+        app.post('/api/getRecord', async (req, res) => {
+            const tableName = req.body.tableName;
+            const id = req.body.ID;
+            console.log(tableName, id);
+            const cursor = await database.collection(tableName).findOne({_id: new ObjectId(id)});
+            console.log(cursor);
+            res.status(200).send(cursor);
         });
 
         // // Query for getting user data
