@@ -125,6 +125,20 @@ const run = async () => {
             }
         });
 
+
+        // Query for getting user data 
+        app.get('/api/getRecord/:tableName/:ID', async (req, res) => {
+            const tableName = req.query.tableName;
+            const ID = req.query.ID;
+
+            const cursor = await tableName.findOne({ _id: ID });
+            if (cursor) {
+                res.status(200).send(cursor);
+            } else {
+                res.status(404).send("No data found!");
+            }
+        });
+
         // // Query for getting user data
         // app.post('/api/tableData', async (req, res) => {
         //     const target = req.body.target;
