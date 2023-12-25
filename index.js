@@ -44,12 +44,7 @@ const run = async () => {
         app.get("/api/template/:templateName", async (req, res) => {
             const templateName = req.params.templateName;
             const cursor = await templateCollection.findOne({ templateName: templateName });
-            if (cursor) {
-                res.status(200).send(cursor);
-            }
-            else {
-                res.status(404).send("No data found!");
-            }
+            res.send(cursor);
         });
 
         // Query for getting user data
