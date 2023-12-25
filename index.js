@@ -18,8 +18,6 @@ const uri = process.env.MONGODB_URI;
 const client = new MongoClient(uri);
 exports.client = client;
 
-app.options('*', cors());
-
 app.get('/', (req, res) => {
     res.send('Hello World!')
 });
@@ -33,6 +31,10 @@ const run = async () => {
 
         // Query for getting a specific template
         app.get("/api/template", async (req, res) => {
+              proxy.web(req, res, {
+                target: 'https://besca-server.vercel.app',
+                changeOrigin: true,
+              });
             const templateName = req.query.templateName;
             const cursor = await templateCollection.findOne({ templateName: templateName });
             if (cursor) {
