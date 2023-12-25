@@ -10,7 +10,7 @@ exports.app = app;
 
 const port = process.env.PORT || 4000;
 
-app.use(cors({ credentials: true, origin: ['http://localhost:3000', 'http://localhost:3001'] }));
+app.use(cors({ credentials: true, origin: 'http://localhost:3000' }));
 app.use(express.json());
 
 const uri = process.env.MONGODB_URI;
@@ -31,10 +31,6 @@ const run = async () => {
 
         // Query for getting a specific template
         app.get("/api/template", async (req, res) => {
-              proxy.web(req, res, {
-                target: 'https://besca-server.vercel.app',
-                changeOrigin: true,
-              });
             const templateName = req.query.templateName;
             const cursor = await templateCollection.findOne({ templateName: templateName });
             if (cursor) {
