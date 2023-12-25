@@ -18,6 +18,7 @@ const uri = process.env.MONGODB_URI;
 const client = new MongoClient(uri);
 exports.client = client;
 
+app.options('*', cors());
 
 app.get('/', (req, res) => {
     res.send('Hello World!')
