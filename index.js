@@ -10,7 +10,7 @@ exports.app = app;
 
 const port = process.env.PORT || 4000;
 
-app.use(cors({ credentials: true, origin: 'http://localhost:3000' }));
+app.use(cors({ credentials: true, origin: ['http://localhost:3000', 'http://localhost:3001', 'https://bex3d.netlify.app'] }));
 app.use(express.json());
 
 const uri = process.env.MONGODB_URI;
